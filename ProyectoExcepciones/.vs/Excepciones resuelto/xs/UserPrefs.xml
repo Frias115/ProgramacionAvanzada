@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{7D7124B7-27E0-56F9-F199-A066698EDF2B}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DeliveryRobot.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Parcel.cs" Line="33" Column="27" />
+      <File FileName="Assets/Scripts/User.cs" Line="33" Column="16" />
+      <File FileName="Assets/Scripts/DeliveryRobot.cs" Line="116" Column="18" />
+      <File FileName="Assets/Scripts/Hub.cs" Line="25" Column="50" />
+      <File FileName="Assets/Scripts/NoParcelsAvailableException.cs" Line="3" Column="41" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Excepciones_220resuelto PreferredExecutionTarget="Unity.Editor" />
+  <MultiItemStartupConfigurations />
+</Properties>

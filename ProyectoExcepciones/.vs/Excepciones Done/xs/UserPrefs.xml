@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{D1C1213D-31FE-FFCF-2221-54506434F855}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Parcel.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameManager.cs" Line="43" Column="55" />
+      <File FileName="Assets/Scripts/DeliveryRobot.cs" Line="146" Column="34" />
+      <File FileName="Assets/Scripts/Parcel.cs" Line="84" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Excepciones_220Done PreferredExecutionTarget="Unity.Editor" />
+</Properties>
