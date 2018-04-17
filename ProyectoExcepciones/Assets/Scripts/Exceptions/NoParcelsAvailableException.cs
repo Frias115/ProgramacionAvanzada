@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
 
-public class NoParcelsAvailableException : UnityException {
+public class NoParcelsAvailableException : UnityException
+{
+
 }
+
+

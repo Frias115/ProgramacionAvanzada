@@ -112,25 +112,45 @@ public class DeliveryRobot : Movable {
     /// Se llama cuando llegamos al punto de entrega de un paquete
     /// </summary>
     void DeliverCurrentParcel() {
-        var validAddress = _isAddressValid;
-        var targetAvailable = _isTargetAvailable;
+        try
+        {
+            var validAddress = _isAddressValid;
+            var targetAvailable = _isTargetAvailable;
 
-        CurrentParcel.Attempts++;
-        
-        // Comprobamos que el punto de entrega sea válido (existe una casa en el lugar)
-        if (validAddress) {
-            // La dirección es correcta, ahora comprobamos el usuario se encuentre en casa
-            if (targetAvailable) {
-                // Podemos entregar el paquete
-                CurrentParcel.Deliver();
-                CurrentParcel = null;
-            } else {
-                // El destinatario estaba ausente, no podemos entregar el paquete
-                Debug.LogWarning(gameObject.name + ": Error en la entrega del paquete " + CurrentParcel.name + ". Motivo: Destinatario ausente");
+            CurrentParcel.Attempts++;
+
+            // Comprobamos que el punto de entrega sea válido (existe una casa en el lugar)
+            if (validAddress)
+            {
+                // La dirección es correcta, ahora comprobamos el usuario se encuentre en casa
+                if (targetAvailable)
+                {
+                    // Podemos entregar el paquete
+                    CurrentParcel.Deliver();
+                    CurrentParcel = null;
+                }
+                else
+                {
+                    // El destinatario estaba ausente, no podemos entregar el paquete
+                    Debug.LogWarning(gameObject.name + ": Error en la entrega del paquete " + CurrentParcel.name + ". Motivo: Destinatario ausente");
+                    throw new RecipientMissingException();
+                }
             }
-        } else {
-            // Dirección incorrecta
-            Debug.LogWarning(gameObject.name + ": Error en la entrega del paquete " + CurrentParcel.name + ". Motivo: Dirección incorrecta");
+            else
+            {
+                // Dirección incorrecta
+                Debug.LogWarning(gameObject.name + ": Error en la entrega del paquete " + CurrentParcel.name + ". Motivo: Dirección incorrecta");
+                throw new InvalidAddressException();
+            }
+        }
+        catch (InvalidAddressException)
+        {
+            CurrentParcel.AddInvalidAddressIncidence();
+            CurrentParcel.MarkAsReturnToSender();
+        }
+        catch (RecipientMissingException)
+        {
+            CurrentParcel.AddRecipientMissingIncidence();
         }
     }
 
@@ -139,11 +159,19 @@ public class DeliveryRobot : Movable {
     /// </summary>
     void ArrivedToHub() {
         if (CurrentParcel == null) {
-            CurrentParcel = _currentHub.RequestParcel();
-            CurrentState = State.DeliveringParcel;
-            CurrentParcel.transform.parent = transform;
-            CurrentParcel.transform.localPosition = new Vector3(0, 1.4f, .75f);
-            GoTo(CurrentParcel.TargetAdress);
+            try
+            {
+                CurrentParcel = _currentHub.RequestParcel();
+                CurrentState = State.DeliveringParcel;
+                CurrentParcel.transform.parent = transform;
+                CurrentParcel.transform.localPosition = new Vector3(0, 1.4f, .75f);
+                GoTo(CurrentParcel.TargetAdress);
+            }
+            catch (NoParcelsAvailableException)
+            {
+                ChangeHub();
+            }
+
         } else {
             // Dejamos el paquete que llevamos (venimos de intentar entregarlo y no hemos podido)
             _currentHub.StoreParcel(CurrentParcel);
