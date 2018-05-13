@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour {
             float rand = Random.value;
             if (bulletProbability > rand && onPlay)
             {
-                GameObject bullet = GameObject.Instantiate(bulletPrefab, new Vector3(this.transform.position.x, this.transform.position.y - 0.15f, this.transform.position.z), Quaternion.Euler(Vector2.down));
+                GameObject bullet = PoolManager.Instantiate(bulletPrefab, new Vector3(this.transform.position.x, this.transform.position.y - 0.15f, this.transform.position.z));
                 bullet.GetComponent<Rigidbody2D>().velocity = Vector2.down * bulletVelocity;
 
             }
@@ -83,7 +83,8 @@ public class EnemyController : MonoBehaviour {
                 diff.Normalize();
                 float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-                GameObject bullet = GameObject.Instantiate(bulletPrefab, new Vector3(this.transform.position.x, this.transform.position.y - 0.15f, this.transform.position.z), Quaternion.Euler(0f, 0f, rot_z - 90));
+                GameObject bullet = PoolManager.Instantiate(bulletPrefab, new Vector3(this.transform.position.x, this.transform.position.y - 0.15f, this.transform.position.z));
+                bullet.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
                 bullet.GetComponent<Rigidbody2D>().velocity = diff.normalized * bulletVelocity;
                 _velocity = velocity * 2;
                 alreadyShoot = true;

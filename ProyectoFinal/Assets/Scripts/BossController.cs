@@ -46,7 +46,6 @@ public class BossController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         bulletSpawn = transform.Find("BulletSpawn");
-        Debug.Log(bulletSpawn);
         bulletSpawn1 = transform.Find("BulletSpawn1");
         missileSpawn = transform.Find("MissileSpawn");
 
@@ -95,9 +94,9 @@ public class BossController : MonoBehaviour
     {
         if (nextShootTime > bulletPeriod)
         {
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.Euler(Vector2.down));
+            GameObject bullet = PoolManager.Instantiate(bulletPrefab, bulletSpawn.position);
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.down * bulletVelocity;
-            bullet = GameObject.Instantiate(bulletPrefab, bulletSpawn1.position, Quaternion.Euler(Vector2.down));
+            bullet = PoolManager.Instantiate(bulletPrefab, bulletSpawn1.position);
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.down * bulletVelocity;
             nextShootTime = 0;
         }
@@ -113,7 +112,8 @@ public class BossController : MonoBehaviour
             diff.Normalize();
             float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-            GameObject missile = GameObject.Instantiate(missilePrefab, missileSpawn.position, Quaternion.Euler(0f, 0f, rot_z - 90));
+            GameObject missile = PoolManager.Instantiate(missilePrefab, missileSpawn.position);
+            missile.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
             missile.GetComponent<Rigidbody2D>().velocity = diff.normalized * missileVelocity;
 
             audioSource.clip = shootSound;

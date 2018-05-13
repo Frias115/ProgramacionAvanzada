@@ -10,10 +10,21 @@ public class PoolManager : Singleton<PoolManager>
 
     public List<GameObject> prefabsPosibles;
 
+    public int numberOfObjectsInPool = 10;
+
     void Awake()
     {
         pool = new Dictionary<string, List<GameObject>>();
         poolParent = new GameObject("Pool").transform;
+
+    }
+
+    void Start()
+    {
+        foreach (var prefab in prefabsPosibles)
+        {
+            Load(prefab, numberOfObjectsInPool / prefabsPosibles.Count);
+        }
     }
 
     public static void Load(GameObject prefab, int quantity = 1)
@@ -140,6 +151,13 @@ public class PoolManager : Singleton<PoolManager>
         l.RemoveAt(0);
         go.SetActive(true);
         go.transform.SetParent(null);
+        return go;
+    }
+
+    public static GameObject Instantiate(GameObject name, Vector3 position)
+    {
+        GameObject go;
+        go = Spawn(name, position);
         return go;
     }
 }

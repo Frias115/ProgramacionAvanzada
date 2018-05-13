@@ -16,11 +16,11 @@ public class BulletController : MonoBehaviour {
             {
                 other.GetComponent<BossController>().Damage();
             }
-            Destroy(gameObject);
+            PoolManager.Despawn(gameObject);
         } else if(other.gameObject.layer == Layers.Player)
         {
             other.GetComponent<PlayerController>().Damage();
-            Destroy(gameObject);
+            PoolManager.Despawn(gameObject);
         } 
     }
 

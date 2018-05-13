@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public float velocity = 1f;
     public int health = 3;
+    public GameObject bulletPrefab;
     public float bulletVelocity = 1;
     public float bulletPeriod = 0.5f;
     public Text healthUI;
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour {
             {
                 if (nextShootTime > bulletPeriod)
                 {
-                    GameObject bullet = GetComponent<SpawnerPooling>().Instantiate(new Vector3(this.transform.position.x,this.transform.position.y + 0.15f,this.transform.position.z));
+                    GameObject bullet = PoolManager.Instantiate(bulletPrefab, new Vector3(this.transform.position.x,this.transform.position.y + 0.15f,this.transform.position.z));
                     bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * bulletVelocity;
                     nextShootTime = 0;
                     audioSource.clip = shootSound;

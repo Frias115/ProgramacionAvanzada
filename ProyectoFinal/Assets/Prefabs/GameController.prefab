@@ -155,7 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c257bc0b98b2a42b0ada9b2a7dcc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabsPosibles: []
+  prefabsPosibles:
+  - {fileID: 1518037774376868, guid: 0ed5b37701b8fb946bcccc8e12145a7d, type: 2}
+  - {fileID: 1829648893765616, guid: 8a9a453f382f89e43a02b43f475cf4a8, type: 2}
+  - {fileID: 1564392327337740, guid: 059a6e58a5978dc47abc82935c52628c, type: 2}
+  numberOfObjectsInPool: 10
 --- !u!114 &114738335537744984
 MonoBehaviour:
   m_ObjectHideFlags: 1

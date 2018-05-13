@@ -162,6 +162,11 @@ Prefab:
       propertyPath: deathMenuUI
       value: 
       objectReference: {fileID: 463045186}
+    - target: {fileID: 114606434844752298, guid: e149d459015224dd9a264f2dd027f15e,
+        type: 2}
+      propertyPath: health
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e149d459015224dd9a264f2dd027f15e, type: 2}
   m_IsPrefabParent: 0
@@ -738,11 +743,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114425414311778706, guid: 865ab382cb372ae4eaeb2cb0af1d76aa,
-        type: 2}
-      propertyPath: prefabsPosibles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4767031179018002, guid: 865ab382cb372ae4eaeb2cb0af1d76aa, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -777,14 +777,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114425414311778706, guid: 865ab382cb372ae4eaeb2cb0af1d76aa,
         type: 2}
-      propertyPath: prefabsPosibles.Array.data[0]
-      value: 
-      objectReference: {fileID: 1518037774376868, guid: 0ed5b37701b8fb946bcccc8e12145a7d,
-        type: 2}
-    - target: {fileID: 114738335537744984, guid: 865ab382cb372ae4eaeb2cb0af1d76aa,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: numberOfObjectsInPool
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 865ab382cb372ae4eaeb2cb0af1d76aa, type: 2}
