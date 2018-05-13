@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1140018814528272}
+  m_IsPrefabParent: 1
+--- !u!1 &1140018814528272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4767031179018002}
+  - component: {fileID: 114061420955443404}
+  - component: {fileID: 114738335537744984}
+  - component: {fileID: 114425414311778706}
+  - component: {fileID: 82163278032028576}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4767031179018002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140018814528272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82163278032028576
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140018814528272}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ecf21a8971d3e224cbd3c1e5b5b023ba, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114061420955443404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140018814528272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1889419f0a5544f3831f633d4c6748d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startBackground: {fileID: 1778504565568652, guid: fc41de61599cda74b85f66da95a7fca6,
+    type: 2}
+  waterBackground: {fileID: 1134268552030662, guid: 609374e56b012ef4c8a1e684de40aeb5,
+    type: 2}
+  listBackgrounds:
+  - {fileID: 1005859456371652, guid: 125b394a860e04db6a79c5d3992411e6, type: 2}
+  - {fileID: 1617718168655976, guid: 4367cc1319c501a489506dfd535d5a4d, type: 2}
+  - {fileID: 1934875199718774, guid: 946d572609e3c6f4b811aba45c03b39b, type: 2}
+  - {fileID: 1605926464058872, guid: 5d1ed78ab4276cb4bb180d53c3e46d23, type: 2}
+  scrollVelocity: 3
+--- !u!114 &114425414311778706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140018814528272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c257bc0b98b2a42b0ada9b2a7dcc45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabsPosibles: []
+--- !u!114 &114738335537744984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140018814528272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea05029a19da2646aa69ba697a8334b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 1912817050176550, guid: ee6198bb5888e7145ad02be0e16e2048, type: 2}
+  wavePrefabs:
+  - {fileID: 1711821935543596, guid: 49a1cc6c015bdbc49949013e14423430, type: 2}
+  - {fileID: 1183173076634760, guid: 9665e043f27517a459c88e37c84e94d5, type: 2}
+  - {fileID: 1298865744101536, guid: 4bcf4344e7168c7408d0fe7ca2414c4b, type: 2}
+  - {fileID: 1046277596988440, guid: 7d2a3f7790d81df418d9ca74b3d0839e, type: 2}
+  - {fileID: 1130118552178430, guid: 1ca423ade1cda40488b3bc3000f04253, type: 2}
+  - {fileID: 1559478984949702, guid: e251f6a5d09db2048a6b30bcfba21c90, type: 2}
+  - {fileID: 1220204423584176, guid: ef7f27000aaccfd41ace56f811ed7164, type: 2}
+  - {fileID: 1900630705877446, guid: eb52cd0c8cfa4ba4e9353dee5d604ff1, type: 2}
+  - {fileID: 1415787803549276, guid: e5c5a801b3265dd4d988c28cce003ede, type: 2}
+  - {fileID: 1237608831308790, guid: 127845be831e3cb449093aa081d51d8c, type: 2}
+  - {fileID: 1644640886245050, guid: 69d8e74527b4f2644893ca3d7428b0a1, type: 2}
+  - {fileID: 1896800549098702, guid: 8025e73cf0136a5479519e13472f106e, type: 2}
+  - {fileID: 1261818078490226, guid: 74b853803e33e1f4290530946be71298, type: 2}
+  - {fileID: 1013420037716096, guid: 9bf2126c16f98b342b8d5031c4c97003, type: 2}
+  - {fileID: 1549537354713278, guid: dad5eb568c1fc0a49b73117f5eda642c, type: 2}
+  - {fileID: 1880254843656494, guid: 389e604f71de91445a416f6ff89d587a, type: 2}
+  - {fileID: 1062213682629362, guid: 59526a885ec9f284ab302719b1ef3fa3, type: 2}
+  numberOfWaves: 15
+  timeBetweenWaves: 5
+  numberOfWavesAtTheSameTime: 3
