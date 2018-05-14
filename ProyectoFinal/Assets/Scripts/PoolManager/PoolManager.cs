@@ -85,8 +85,8 @@ public class PoolManager : Singleton<PoolManager>
             pool[go.name] = new List<GameObject>();
         }
 
-        go.SetActive(false);
         go.transform.SetParent(poolParent);
+        go.SetActive(false);
         pool[go.name].Add(go);
     }
 
