@@ -462,8 +462,8 @@ MonoBehaviour:
   OtherPlayerPrefab: {fileID: 1913822339637818, guid: 79ff604374e8d4a0c9f88a4ae109428a,
     type: 2}
   MapVersion: 0
-  HostIp: 193.147.75.247
-  HostPort: 1000
+  HostIp: 193.147.14.122
+  HostPort: 10000
 --- !u!114 &1477765429
 MonoBehaviour:
   m_ObjectHideFlags: 0

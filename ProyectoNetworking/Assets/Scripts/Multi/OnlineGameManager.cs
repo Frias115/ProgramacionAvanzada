@@ -118,6 +118,12 @@ public class OnlineGameManager : GameManager {
                         otherPlayer.Name = value["playerName"];
                         _otherPlayers[key] = otherPlayer;
                     }
+                    _otherPlayers[key].GetComponent<Health>().CurrentHealth = pair.Value["health"];
+                    _otherPlayers[key].GetComponent<Character>().SetPosition(new Vector2(pair.Value["position"]["x"], pair.Value["position"]["y"]));
+                    _otherPlayers[key].GetComponent<OtherPlayer>().Velocity = pair.Value["velocity"];
+
+                } else {
+                    _player.GetComponent<Health>().CurrentHealth = pair.Value["health"];
                 }
             }
         }
