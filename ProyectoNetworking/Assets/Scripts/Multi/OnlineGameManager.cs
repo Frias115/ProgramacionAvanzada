@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using SimpleJSON;
 
 public class OnlineGameManager : GameManager {
@@ -8,6 +9,8 @@ public class OnlineGameManager : GameManager {
     public int MapVersion;
     public string HostIp;
     public int HostPort;
+    public Text highscoreText;
+
 
     public const string INITIAL_REQUEST = "initial";
     public const string UPDATE_REQUEST = "update";
@@ -17,6 +20,7 @@ public class OnlineGameManager : GameManager {
     protected int _playerId;
     protected Dictionary<int, OtherPlayer> _otherPlayers;
     protected TAPNet _client;
+    protected int highscore = -1;
 
     // Use this for initialization
     protected override void Awake () {
@@ -125,6 +129,13 @@ public class OnlineGameManager : GameManager {
                 } else {
                     _player.GetComponent<Health>().CurrentHealth = pair.Value["health"];
                 }
+
+                if(pair.Value["score"].AsInt >= highscore){
+                    highscore = pair.Value["score"].AsInt;
+
+                    highscoreText.text = "Top: " + pair.Value["playerName"] + " " + pair.Value["score"];
+
+                }
             }
         }
         yield return null;
@@ -162,5 +173,7 @@ public class OnlineGameManager : GameManager {
             chestId = chestId,
             playerId = _playerId
         };
+
+        _client.Send(chestRequest.ToJson(), TAPNet.DATAGRAM_RELIABLE);
     }
 }
