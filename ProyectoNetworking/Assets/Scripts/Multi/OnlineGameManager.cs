@@ -21,6 +21,7 @@ public class OnlineGameManager : GameManager {
     protected Dictionary<int, OtherPlayer> _otherPlayers;
     protected TAPNet _client;
     protected int highscore = -1;
+    protected Dictionary<int, OtherPlayer> _otherPlayersLastTime;
 
     // Use this for initialization
     protected override void Awake () {
@@ -112,6 +113,8 @@ public class OnlineGameManager : GameManager {
                 }
             }
 
+            _otherPlayersLastTime = new Dictionary<int, OtherPlayer>(_otherPlayers);
+
             foreach (var pair in gameState["players"]) {
                 var key = int.Parse(pair.Key);
                 var value = pair.Value;
@@ -122,12 +125,25 @@ public class OnlineGameManager : GameManager {
                         otherPlayer.Name = value["playerName"];
                         _otherPlayers[key] = otherPlayer;
                     }
-                    _otherPlayers[key].GetComponent<Health>().CurrentHealth = pair.Value["health"];
+
+                    // Elimino personaje si existe en la partida actual y me quedo con los que ya no esten
+                    if(_otherPlayersLastTime.ContainsKey(key)){
+                        _otherPlayersLastTime.Remove(key);
+                    }
+                    
                     _otherPlayers[key].GetComponent<Character>().SetPosition(new Vector2(pair.Value["position"]["x"], pair.Value["position"]["y"]));
                     _otherPlayers[key].GetComponent<OtherPlayer>().Velocity = pair.Value["velocity"];
+                    _otherPlayers[key].GetComponent<OtherPlayer>().Score = pair.Value["score"];
+                    if(_otherPlayers[key].GetComponent<Health>().CurrentHealth > 0){
+                        _otherPlayers[key].GetComponent<Health>().CurrentHealth = pair.Value["health"];
+                    } else {
+                        Destroy( _otherPlayers[key].gameObject);
+                        _otherPlayers.Remove(key);
+                    }
 
                 } else {
                     _player.GetComponent<Health>().CurrentHealth = pair.Value["health"];
+                    _player.GetComponent<Character>().Score = pair.Value["score"];
                 }
 
                 if(pair.Value["score"].AsInt >= highscore){
@@ -137,6 +153,15 @@ public class OnlineGameManager : GameManager {
 
                 }
             }
+
+            if(_otherPlayersLastTime.Count > 0){
+                foreach (var pair in _otherPlayersLastTime) {     
+                    Destroy( _otherPlayers[pair.Key].gameObject);         
+                    _otherPlayers.Remove(pair.Key);
+                }
+                _otherPlayersLastTime.Clear();
+            }
+
         }
         yield return null;
     }

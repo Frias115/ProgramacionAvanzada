@@ -76,7 +76,7 @@ public class TAPNet {
         try {
             _client.Send(datagram, datagram.Length);
         } catch (SocketException e) {
-            Debug.Log(e);
+            //Debug.Log(e);
         }
     }
 
@@ -169,7 +169,7 @@ public class TAPNet {
                     _receivedDatagrams.Remove(datagramId);
                     if (onResponseReceived != null) {
                         onResponseReceived(JSON.Parse(responseString));
-                        Debug.Log("responseString: " + responseString);
+                        //Debug.Log("responseString: " + responseString);
                     }
                 }
             } else {
