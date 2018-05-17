@@ -64,7 +64,19 @@ public class PoolManager : Singleton<PoolManager>
 
     private GameObject SpawnInternal(GameObject prefab)
     {
-        if (!pool.ContainsKey(prefab.name) || pool[prefab.name].Count == 0)
+        try
+        {
+            if (prefab == null)
+            {
+                throw new NullPrefabException();
+            }
+
+            if (!pool.ContainsKey(prefab.name) || pool[prefab.name].Count == 0)
+            {
+                throw new EmptyPoolException();
+            }
+        }
+        catch (EmptyPoolException)
         {
             Debug.LogWarning("Requested item " + prefab.name + " but it's pool was empty");
             Load(prefab, 1);
@@ -96,8 +108,18 @@ public class PoolManager : Singleton<PoolManager>
 
     public static GameObject Spawn(GameObject prefab, Vector3 posicion)
     {
-        var instance = Instance.SpawnInternal(prefab);
-        instance.transform.position = posicion;
+        GameObject instance = null;
+
+        try
+        {
+            instance = Instance.SpawnInternal(prefab);
+            instance.transform.position = posicion;
+        }
+        catch (NullPrefabException)
+        {
+            throw new NullPrefabException();
+        }
+
         return instance;
     }
 
@@ -115,49 +137,19 @@ public class PoolManager : Singleton<PoolManager>
         return pool[prefab];
     }
 
-    //Añadir métodos que nos permitan spawnear objetos por nombre
-
-    public static GameObject Spawn(string prefab, Vector3 posicion)
+    public static GameObject Instantiate(GameObject prefab, Vector3 position)
     {
-        var instance = Instance.SpawnInternal(prefab);
-        instance.transform.position = posicion;
-        return instance;
-    }
+        GameObject go = null;
 
-    private GameObject SpawnInternal(string nombrePrefab)
-    {
-        GameObject prefab = null;
-        foreach (GameObject item in prefabsPosibles)
+        try
         {
-            if (item.name == nombrePrefab)
-            {
-                prefab = item;
-            }
+            go = Spawn(prefab, position);
+        }
+        catch (NullPrefabException)
+        {
+            throw new NullPrefabException();
         }
 
-        if (prefab == null)
-        {
-            return null;
-        }
-
-        if (!pool.ContainsKey(prefab.name) || pool[prefab.name].Count == 0)
-        {
-            Debug.LogWarning("Requested item " + prefab.name + " but it's pool was empty");
-            Load(prefab, 1);
-        }
-
-        var l = pool[prefab.name];
-        var go = l[0];
-        l.RemoveAt(0);
-        go.SetActive(true);
-        go.transform.SetParent(null);
-        return go;
-    }
-
-    public static GameObject Instantiate(GameObject name, Vector3 position)
-    {
-        GameObject go;
-        go = Spawn(name, position);
         return go;
     }
 }
