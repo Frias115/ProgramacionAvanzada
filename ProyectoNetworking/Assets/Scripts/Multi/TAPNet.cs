@@ -49,7 +49,6 @@ public class TAPNet {
         Debug.Log("Listening...");
 		while (true) {
             var data = _client.Receive(ref _hostEP);
-            Debug.Log(data);
             ReceivedData(data);
         }
     }
@@ -76,12 +75,11 @@ public class TAPNet {
         try {
             _client.Send(datagram, datagram.Length);
         } catch (SocketException e) {
-            //Debug.Log(e);
+            Debug.Log(e);
         }
     }
 
     void Resend(int datagramId) {
-        // TODO: Implementar
         SendAck(datagramId, BitConverter.ToInt32(_pendingSentRequests[datagramId].data, 44));
     }
 
@@ -155,10 +153,9 @@ public class TAPNet {
                 }
                 var obtainedSha256 = CalculateSha256(data.Sub(48, data.Length - 48)); // Calculamos el Sha256 del mensaje (bytes desde el 48 hasta el final)
 
-                // dar por buenos los paquetes validados
+                // Confirmar los paquetes validados
                 if(CompareSha256(expectedSha256, obtainedSha256)){
                     _receivedDatagrams[datagramId][currentChunk] = Encoding.UTF8.GetString(data.Sub(48, data.Length - 48));
-                    // Enviar el ACK si el paquete es bueno
                     SendAck(datagramId, currentChunk);
                 }
 
@@ -169,7 +166,6 @@ public class TAPNet {
                     _receivedDatagrams.Remove(datagramId);
                     if (onResponseReceived != null) {
                         onResponseReceived(JSON.Parse(responseString));
-                        //Debug.Log("responseString: " + responseString);
                     }
                 }
             } else {
@@ -180,6 +176,14 @@ public class TAPNet {
         } catch (Exception ex) {
             Debug.LogError(ex);
         }
+    }
+
+    /// <summary>
+    /// Libera los recursos utilizados por el cliente
+    /// </summary>
+    public void Cleanup()
+    {
+        _client.Close();
     }
 
     /// <summary>

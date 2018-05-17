@@ -113,6 +113,7 @@ public class OnlineGameManager : GameManager {
                 }
             }
 
+            // Copio la lista de personajes que habia en el anterior JSON
             _otherPlayersLastTime = new Dictionary<int, OtherPlayer>(_otherPlayers);
 
             foreach (var pair in gameState["players"]) {
@@ -131,29 +132,27 @@ public class OnlineGameManager : GameManager {
                         _otherPlayersLastTime.Remove(key);
                     }
                     
+                    // Actualizo la informacion de los jugadores que estan en la partida
                     _otherPlayers[key].GetComponent<Character>().SetPosition(new Vector2(pair.Value["position"]["x"], pair.Value["position"]["y"]));
                     _otherPlayers[key].GetComponent<OtherPlayer>().Velocity = pair.Value["velocity"];
                     _otherPlayers[key].GetComponent<OtherPlayer>().Score = pair.Value["score"];
-                    if(_otherPlayers[key].GetComponent<Health>().CurrentHealth > 0){
-                        _otherPlayers[key].GetComponent<Health>().CurrentHealth = pair.Value["health"];
-                    } else {
-                        Destroy( _otherPlayers[key].gameObject);
-                        _otherPlayers.Remove(key);
-                    }
+                    _otherPlayers[key].GetComponent<Health>().CurrentHealth = pair.Value["health"];
+
 
                 } else {
+                    // Actualizo la informacion de mi personaje
                     _player.GetComponent<Health>().CurrentHealth = pair.Value["health"];
                     _player.GetComponent<Character>().Score = pair.Value["score"];
                 }
 
+                // Compruebo si hay un nuevo highscore y cambio el texto
                 if(pair.Value["score"].AsInt >= highscore){
                     highscore = pair.Value["score"].AsInt;
-
                     highscoreText.text = "Top: " + pair.Value["playerName"] + " " + pair.Value["score"];
-
                 }
             }
 
+            // Elimino de la partida a los jugadores que se han desconectado o se han muerto
             if(_otherPlayersLastTime.Count > 0){
                 foreach (var pair in _otherPlayersLastTime) {     
                     Destroy( _otherPlayers[pair.Key].gameObject);         
@@ -200,5 +199,10 @@ public class OnlineGameManager : GameManager {
         };
 
         _client.Send(chestRequest.ToJson(), TAPNet.DATAGRAM_RELIABLE);
+    }
+
+    void OnDestroy()
+    {
+        _client.Cleanup();
     }
 }
