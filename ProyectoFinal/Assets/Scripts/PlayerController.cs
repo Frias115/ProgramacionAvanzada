@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public abstract class PlayerController : MonoBehaviour {
 
     public float velocity = 1f;
     public int health = 3;
@@ -15,21 +15,20 @@ public class PlayerController : MonoBehaviour {
     public AudioClip shootSound;
 
 
+    protected float nextShootTime = 0.0f;
+    protected float _velocity;
+    protected int _health;
+    protected float upBound, downBound, leftBound, rightBound;
+    protected float spriteOffSetOnX, spriteOffSetOnY;
+    protected float velocityOnX, velocityOnY;
+    protected bool alive = true;
+    protected Rigidbody2D rb;
+    protected SpriteRenderer sr;
+    protected Animator animator;
+    protected AudioSource audioSource;
 
-    private float nextShootTime = 0.0f;
-    private float _velocity;
-    private int _health;
-    private float upBound, downBound, leftBound, rightBound;
-    private float spriteOffSetOnX, spriteOffSetOnY;
-    private float velocityOnX, velocityOnY;
-    private bool alive = true;
-    private Rigidbody2D rb;
-    private SpriteRenderer sr;
-    private Animator animator;
-    private AudioSource audioSource;
 
-
-    void Start () {
+    protected virtual void Start () {
 		_velocity = velocity;
         _health = health;
 
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update () {
+    protected virtual void Update () {
         if(alive){
             //Movement 
             //X
@@ -163,7 +162,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    private IEnumerator WaitForDeathAnimation()
+    protected IEnumerator WaitForDeathAnimation()
     {
 
         yield return new WaitForSeconds(1.0f);
