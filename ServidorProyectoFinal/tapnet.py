@@ -62,7 +62,7 @@ class TapNet:
             m = hashlib.sha256()
             m.update(part)
 
-            parto = data_type.to_bytes(
+            part = data_type.to_bytes(
                 4, 'little'
             ) + self.datagramId.to_bytes(
                 4, 'little'
@@ -74,9 +74,9 @@ class TapNet:
                 4, 'little'
             ) + part
 
-
-            self.sock.sendto(parto, to)
-            datagrams_to_send.append(parto)
+            print(part)
+            self.sock.sendto(part, to)
+            datagrams_to_send.append(part)
 
         if data_type == self.DATAGRAM_RELIABLE:
             # Apuntamos estos paquetes como 'pendientes de confirmar su recepcion'

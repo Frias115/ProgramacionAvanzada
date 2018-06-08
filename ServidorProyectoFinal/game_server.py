@@ -1,5 +1,4 @@
 from tapnet import TapNet
-import json
 
 
 class GameServer:
@@ -27,16 +26,14 @@ class GameServer:
         :param received_json: JSON que hemos recibido
         :param sender: Quien nos envia los datos
         """
-
-        self.high_scores.append((json.loads(received_json)['name'], int(json.loads(received_json)['score'])))
+        self.high_scores.append((received_json['name'], int(received_json['score'])))
 
         data_to_send = {
             'high_scores': self.get_ordered_high_scores(),
-            'player_rank': self.get_player_rank(json.loads(received_json)['name'],
-                                                int(json.loads(received_json)['score'])),
-            'player_stats': {json.loads(received_json)['name'] : int(json.loads(received_json)['score'])}
+            'player_rank': self.get_player_rank(received_json['name'], int(received_json['score'])),
+            'player_stats': [received_json['name'], int(received_json['score'])]
         }
-        # print(data_to_send)
+        print(sender)
         self.server.send_json(data_to_send, TapNet.DATAGRAM_RELIABLE, sender)
 
     def start(self):

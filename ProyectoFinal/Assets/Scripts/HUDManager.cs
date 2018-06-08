@@ -30,4 +30,9 @@ public class HUDManager : Singleton<HUDManager>
         }
 
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
 }

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114738335537744984}
   - component: {fileID: 114425414311778706}
   - component: {fileID: 82163278032028576}
+  - component: {fileID: 114201558720242368}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -144,6 +145,19 @@ MonoBehaviour:
   - {fileID: 1934875199718774, guid: 946d572609e3c6f4b811aba45c03b39b, type: 2}
   - {fileID: 1605926464058872, guid: 5d1ed78ab4276cb4bb180d53c3e46d23, type: 2}
   scrollVelocity: 3
+--- !u!114 &114201558720242368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140018814528272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76dea67c71a85ff4cbf4db34be85f134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HostIp: 127.0.0.1
+  HostPort: 10000
 --- !u!114 &114425414311778706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,7 +173,7 @@ MonoBehaviour:
   - {fileID: 1518037774376868, guid: 0ed5b37701b8fb946bcccc8e12145a7d, type: 2}
   - {fileID: 1829648893765616, guid: 8a9a453f382f89e43a02b43f475cf4a8, type: 2}
   - {fileID: 1564392327337740, guid: 059a6e58a5978dc47abc82935c52628c, type: 2}
-  numberOfObjectsInPool: 10
+  numberOfObjectsInPool: 30
 --- !u!114 &114738335537744984
 MonoBehaviour:
   m_ObjectHideFlags: 1

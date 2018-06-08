@@ -27,7 +27,6 @@ public abstract class PlayerController : MonoBehaviour {
     protected Animator animator;
     protected AudioSource audioSource;
 
-
     protected virtual void Start () {
 		_velocity = velocity;
         _health = health;
@@ -168,7 +167,7 @@ public abstract class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
         deathMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 
 
     }

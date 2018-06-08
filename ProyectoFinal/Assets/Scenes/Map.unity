@@ -257,21 +257,9 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!1 &463045186 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1763256458101740, guid: 59b4910fdc546864381e6fdded8ba800,
+  m_PrefabParentObject: {fileID: 1285192368146110, guid: 59b4910fdc546864381e6fdded8ba800,
     type: 2}
   m_PrefabInternal: {fileID: 853450594}
---- !u!114 &463045187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 463045186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ac4a4e5d367574183a2f0af43bc376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneName: Map
 --- !u!1001 &853450594
 Prefab:
   m_ObjectHideFlags: 0
@@ -373,12 +361,11 @@ Prefab:
       propertyPath: m_Name
       value: DeathMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 1763256458101740, guid: 59b4910fdc546864381e6fdded8ba800, type: 2}
+    - target: {fileID: 1285192368146110, guid: 59b4910fdc546864381e6fdded8ba800, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114301784309788950, guid: 59b4910fdc546864381e6fdded8ba800, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59b4910fdc546864381e6fdded8ba800, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1001403537
@@ -536,6 +523,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7399492119f85304c9bd73ef13c459d9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1058586430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1058586432}
+  - component: {fileID: 1058586431}
+  m_Layer: 0
+  m_Name: Dispatcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1058586431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1058586430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512c18650a70fec4ba5da109c4135d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1058586432
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1058586430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 660, y: 324, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1080809950
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,11 +745,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114425414311778706, guid: 865ab382cb372ae4eaeb2cb0af1d76aa,
-        type: 2}
-      propertyPath: numberOfObjectsInPool
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 865ab382cb372ae4eaeb2cb0af1d76aa, type: 2}
   m_IsPrefabParent: 0
@@ -823,6 +845,11 @@ Prefab:
       propertyPath: deathMenuUI
       value: 
       objectReference: {fileID: 463045186}
+    - target: {fileID: 114688053579389286, guid: e149d459015224dd9a264f2dd027f15e,
+        type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e149d459015224dd9a264f2dd027f15e, type: 2}
   m_IsPrefabParent: 0
