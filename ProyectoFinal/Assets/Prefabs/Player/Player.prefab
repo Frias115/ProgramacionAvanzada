@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 3
-  health: 500
+  health: 5
   bulletPrefab: {fileID: 1518037774376868, guid: 0ed5b37701b8fb946bcccc8e12145a7d,
     type: 2}
   bulletVelocity: 3.5

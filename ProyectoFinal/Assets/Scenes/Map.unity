@@ -741,6 +741,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114201558720242368, guid: 865ab382cb372ae4eaeb2cb0af1d76aa,
+        type: 2}
+      propertyPath: HostIp
+      value: 52.86.40.124
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 865ab382cb372ae4eaeb2cb0af1d76aa, type: 2}
   m_IsPrefabParent: 0
@@ -841,11 +846,6 @@ Prefab:
       propertyPath: deathMenuUI
       value: 
       objectReference: {fileID: 463045186}
-    - target: {fileID: 114688053579389286, guid: e149d459015224dd9a264f2dd027f15e,
-        type: 2}
-      propertyPath: health
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e149d459015224dd9a264f2dd027f15e, type: 2}
   m_IsPrefabParent: 0
