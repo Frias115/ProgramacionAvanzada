@@ -5,8 +5,6 @@ from socket import socket, AF_INET, SOCK_DGRAM
 from threading import Thread
 from time import sleep
 from misc import split
-import game_server
-
 
 class TapNet:
     DATAGRAM_ACK = 0
@@ -74,7 +72,6 @@ class TapNet:
                 4, 'little'
             ) + part
 
-            print(part)
             self.sock.sendto(part, to)
             datagrams_to_send.append(part)
 

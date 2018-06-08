@@ -108,7 +108,16 @@ public class BossController : MonoBehaviour
     {
         if (nextMissileTime > bulletPeriod)
         {
-            Vector2 diff = player.transform.position - transform.position;
+            Vector2 diff;
+            if (player == null)
+            {
+                diff = Vector2.down;
+            }
+            else
+            {
+                diff = player.transform.position - transform.position;
+            }
+
             diff.Normalize();
             float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 

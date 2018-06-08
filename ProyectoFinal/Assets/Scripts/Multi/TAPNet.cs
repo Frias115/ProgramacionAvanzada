@@ -59,7 +59,8 @@ public class TAPNet
         while (true)
         {
             var data = _client.Receive(ref _hostEP);
-            Debug.Log("Data: " + data.ToString());
+            
+            //Debug.Log("Data: " + Encoding.UTF8.GetString(data));
             ReceivedData(data);
         }
     }
@@ -186,6 +187,7 @@ public class TAPNet
             var datagramType = BitConverter.ToInt32(data, 0); // Obtener de los datos recibidos, es un Int32 codificado en 4 bytes, empezando por el 0
             var datagramId = BitConverter.ToInt32(data, 4); // Obtener de los datos recibidos, es un Int32 codificado en 4 bytes, empezando por el 4
 
+
             if (datagramType != DATAGRAM_ACK)
             {
                 var expectedSha256 = data.Sub(8, 32);  // Obtener de los datos recibidos, son 32 bytes, empezando por el 8
@@ -203,7 +205,6 @@ public class TAPNet
                 if (CompareSha256(expectedSha256, obtainedSha256))
                 {
                     _receivedDatagrams[datagramId][currentChunk] = Encoding.UTF8.GetString(data.Sub(48, data.Length - 48));
-
                     if (datagramType == DATAGRAM_RELIABLE)
                     {
                         SendAck(datagramId, currentChunk);

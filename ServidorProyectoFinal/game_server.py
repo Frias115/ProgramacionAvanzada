@@ -11,7 +11,7 @@ class GameServer:
         Organiza el diccionario de high scores en orden descendiente
         :return: Diccionario de los 10 high scores mas altos ordenado con formato 'player_name' : highscore
         """
-        self.high_scores = sorted(self.high_scores, key=lambda player:player[1])
+        self.high_scores = sorted(self.high_scores, key=lambda player:player[1], reverse=True)
         return self.high_scores[:10]
 
     def get_player_rank(self, player_name, player_score):
@@ -33,7 +33,6 @@ class GameServer:
             'player_rank': self.get_player_rank(received_json['name'], int(received_json['score'])),
             'player_stats': [received_json['name'], int(received_json['score'])]
         }
-        print(sender)
         self.server.send_json(data_to_send, TapNet.DATAGRAM_RELIABLE, sender)
 
     def start(self):

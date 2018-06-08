@@ -6,9 +6,9 @@ using SimpleJSON;
 
 public class OnlineGameManager : MonoBehaviour{
     public JSONArray highScores;
-    protected int playerHighScoreIndex;
+    public int playerHighScoreIndex;
     public JSONArray playerStats;
-
+    public bool responseRecieved = false;
     public string HostIp;
     public int HostPort;
 
@@ -40,10 +40,10 @@ public class OnlineGameManager : MonoBehaviour{
     /// </summary>
     /// <param name="json">JSON que nos envía el servidor.</param>
     IEnumerator ProcessJSON(JSONNode json) {
-        Debug.Log("Json: " + json);
         highScores = json["high_scores"].AsArray;
         playerHighScoreIndex = json["player_rank"].AsInt;
         playerStats = json["player_stats"].AsArray;
+        responseRecieved = true;
         yield return null;
     }
 
